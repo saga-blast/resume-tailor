@@ -1,0 +1,15 @@
+services:
+  compile-service:
+    build: ./compile-service
+    ports:
+      - "8100:8100"
+    volumes:
+      - tectonic-cache:/home/appuser/.cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8100/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  tectonic-cache:

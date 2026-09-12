@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Backend runtime data
+backend/storage/*
+!backend/storage/.gitkeep
+
+# Node
+node_modules/
+frontend/dist/
+
+# Env
+.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db

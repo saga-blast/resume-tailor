@@ -1,0 +1,395 @@
+%-------------------------
+% Resume in Latex
+% Author : Abey George
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+
+% \pdfglyphtounicode is a pdfTeX-only primitive. Overleaf compiles this
+% template with pdfLaTeX (where it's native), but tectonic's engine is
+% XeTeX-based and doesn't have it -- guard it so it's simply skipped there.
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+\fi
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+% \pagestyle{fancy}
+% \fancyhf{}  % clear all header and footer fields
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable (pdfTeX only)
+\ifPDFTeX
+  \pdfgentounicode=1
+\fi
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-3pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\large#3} & \textit{\small #4} \\
+
+    \end{tabular*}\vspace{-9pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+
+
+\begin{center}
+    {\Huge \scshape Debi Prasad Bhanja} \\ \vspace{2pt}
+    {\normalsize \color{emphasis} Software Engineer $|$ Java, Spring Boot $|$ Distributed Systems, AWS, Microservices} \\ \vspace{2pt}
+    Bangalore, Karnataka, India - 560048 \\ \vspace{1pt}
+    \small
+     \href{mailto:dpbhanjadeo257@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{dpbhanjadeo257@gmail.com}} ~
+     \href{tel:+xxxxxxxxxxxx}{ \raisebox{-0.1\height}\faPhone\ \underline{+91-6371699757} } ~
+     \href{https://www.linkedin.com/in/dpbhanja/}{\raisebox{-0.2\height}\faLinkedinSquare\ \underline{https://www.linkedin.com/in/dpbhanja}}
+    % \href{https://github.com/saga-blast}{\raisebox{-0.2\height}\faGithub\ \underline{saga-blast}} ~
+    % \href{https://leetcode.com/saga_blast/}{\raisebox{-0.2\height}\faLeetCode\ \underline{yourid}} ~
+    % \href{https://codeforces.com/profile/yourid}{\raisebox{-0.2\height}\faPoll\ \underline{yourid}}
+    \vspace{-8pt}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{PROFESSIONAL SUMMARY}
+\vspace{1pt}
+\small{Software Engineer with 3+ years building scalable, distributed backend services in \textbf{Java}, \textbf{Spring Boot}, and \textbf{AWS} - serving \textbf{25K+} enterprise users and \textbf{10M+} monthly queries. Focused on user impact and business outcomes, not just tickets. Hands-on with AI-assisted development (\textbf{Claude Code}, \textbf{MCP servers}) and \textbf{TypeScript} frontend work.}
+\vspace{-12pt}
+
+%-----------PROGRAMMING SKILLS-----------
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{\normalsize{Core Java Stack:}}{ \normalsize{Java, Jakarta EE, Spring Boot, Struts, Hibernate/JPA, REST APIs, Microservices}} \\
+     \textbf{\normalsize{Messaging \& Streaming:}}{ \normalsize{Apache Kafka, RabbitMQ}} \\
+     \textbf{\normalsize{Data \& Caching:}}{ \normalsize{MySQL, PostgreSQL, Redis, DynamoDB, DistDB, PrestoDB}} \\
+     \textbf{\normalsize{Containers \& Cloud:}}{ \normalsize{Docker, Kubernetes, AWS (EC2, S3, IAM, RDS, VPC), CI/CD, Linux}} \\
+     \textbf{\normalsize{Databases:}}{\normalsize{MySQL, PostgreSQL, DynamoDB, Hibernate}} \\
+     \textbf{\normalsize{Frontend \& Other Languages:}}{ \normalsize{TypeScript, JavaScript, React.js, Node.js, Python, C/C++, Perl}}
+     \textbf{\normalsize{Tools \& AI-Assisted Development:}}{\normalsize{ Claude Code (MCP server integration, custom skills), Windsurf, Bruno, Git, GitHub, GitLab, Perforce, Postman, PgAdmin, VS Code, Eclipse, Jira, ZohoCRM}}
+    }}
+ \end{itemize}
+ \vspace{-15pt}
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+\vspace{4pt}
+  \resumeSubHeadingListStart
+
+     \resumeSubheading
+      {Athenahealth %\href{https://drive.google.com/file/d/1kwgDv7Wwr97PnssNGDXB25mn41vBrJi1/view?usp=drivesdk}{\raisebox{-0.1\height}\faExternalLink }
+      }{11/2025 -- 08/2026}
+      {{Software Developer(MTS)}}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{\normalsize{\textbf{Redesigned} a legacy Perl-based ChartSync monolith into a distributed, high-volume document-ingestion pipeline - built an EDS \textbf{Java/Spring Boot microservice} abstracting ingestion across \textbf{EHR} vendors (Cerner, athenahealth's native \textbf{FHIR/FileCloud}) and bridging to the \textbf{Perl monolith} via MDP calls, cutting clinician manual chart-review time by \textbf{10\%}.}}
+
+        \resumeItem{\normalsize{\textbf{Containerized and deployed} the ingestion microservice with \textbf{Docker and Kubernetes}, supporting \textbf{250K+} daily document imports processed through the ChartSync flyout (\textbf{React.js} Shared UI, DocumentReference repos).}}
+        \resumeItem{\normalsize{Used \textbf{Bruno} for API testing, \textbf{OpenSearch} and \textbf{Datadog} for log analysis and monitoring across frontend/backend \textbf{microservices}, and \textbf{Snowflake} for \textbf{PHI} data handling.}}
+      \resumeItemListEnd
+      \vspace{4pt}
+
+    \resumeSubheading
+      {ZOHO  %\href{https://drive.google.com/file/d/1AVuYoKO6Fngv1FRwg81d5CItoaUajSXy/view}{\raisebox{-0.1\height}\faExternalLink }
+      }{10/2023 -- 10/2025}
+      {{Software Developer(MTS)}}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Led design and development of the \textbf{Automatic Anomaly Detection} feature in \textbf{ZohoCRM (Java, Spring Boot)} for 25K+ enterprise users.}}
+
+        \resumeItem{\normalsize{Engineered scalable \textbf{REST APIs} and distributed backend services in \textbf{Java (Spring Boot/Struts)}, integrating \textbf{MySQL, PostgreSQL, DistDB, and PrestoDB}.}}
+
+        % \resumeItem{\normalsize{Designed and introduced scalable \textbf{REST APIs} that integrates robust database solutions like \textbf{MySQL}, \textbf{PostgreSQL}, \textbf{DistDB}, and \textbf{PrestoDB}, ensuring efficient data management.}}
+
+        \resumeItem{\normalsize{Built \textbf{event-driven}, prompt-based \textbf{LLM}-powered capabilities for \textbf{Ask Zia} (Zoho CRM's AI assistant), improving handling of \textbf{10M+} user queries/month using \textbf{Kafka and RabbitMQ} for asynchronous message processing and \textbf{Redis} for caching.}}
+
+
+      \resumeItemListEnd
+ \vspace{4pt}
+    \resumeSubheading
+      {Amazon %\href{https://drive.google.com/file/d/1cNdt-Ml9MgJHAIHzqaD7-A1GDE9l9P_g/view?pli=1}{\raisebox{-0.1\height}\faExternalLink }
+      }{01/2023 -- 06/2023}
+      {{SE II Intern}}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Implemented the integration tests using \textbf{JUnit} for the kindle ads-service, contributed in \textbf{Hibernate} configurations using \textbf{Java-Springboot} framework, gaining exposure to the advertising domain.}}
+
+        \resumeItem{\normalsize{Achieved a \textbf{67\% }reduction in \textbf{MySQL} query time to \textbf{RDS} instance(optimizing it from 4hr 23mins to 1hr 27mins), reducing cost by \textbf{\$4750/yr} for the company.}}
+
+        % % \resumeItem{Managed the DevOps operations for BAND(Books-Advertisement) stack,solved tickets that invloved the SAS(Security Assurance), shepherd and policy engine risks, updating operating system, streamlining the version-set of packages, etc.}
+
+        % \resumeItem{\normalsize{Supervised the \textbf{DevOps} activities for the \textbf{BAND} (Books-Advertisement) stack, addressed \textbf{SAS} (Security Assurance) and \textbf{Shepherd} tickets, monitored and mitigated \textbf{policy engine} risks, updated the operating system, streamlined the \textbf{version-set} of packages, etc.}}
+
+        % \resumeItem{\normalsize{Proficiently leveraged \textbf{Tampermonkey} to develop automation scripts, showcasing adept utilization of a range of\textbf{ AWS} services: \textbf{EC2}, \textbf{S3}, \textbf{IAM}, \textbf{RDS} and \textbf{VPC}.}}
+
+        \resumeItem{\normalsize{Led \textbf{DevOps} initiatives for the BAND (Books-Advertisement) stack, handling \textbf{SAS}/Shepherd tickets, mitigating security risks, and developing automation scripts using \textbf{Tampermonkey} alongside key AWS services (\textbf{EC2}, \textbf{S3}, \textbf{IAM}, \textbf{RDS}, \textbf{VPC}).}}
+
+      \resumeItemListEnd
+      \iffalse
+      \resumeSubheading
+      {Quirnom Solutions %\href{https://drive.google.com/file/d/1kwgDv7Wwr97PnssNGDXB25mn41vBrJi1/view?usp=drivesdk}{\raisebox{-0.1\height}\faExternalLink }
+      }{04/2022 -- 06/2022}
+      {{Mobile Application Intern}}{Hyderabad, India}
+      \resumeItemListStart
+        \resumeItem{\normalsize{Engineered a robust \textbf{e-commerce} Android application connecting 50+ small businesses with a broader market, integrating real-time mapping via \textbf{API} and driving a \textbf{40\%} increase in online transactions.}}
+        % \resumeItem{\normalsize{Executed the successful implementation of \textbf{user authentication} and intricate \textbf{video streaming} functionalities by harnessing the power of \textbf{Firebase} technology. }}
+      \fi
+  \resumeSubHeadingListEnd
+\vspace{-8pt}
+
+
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+    \vspace{-3pt}
+    \resumeSubHeadingListStart
+%        \resumeProjectHeading
+%           {\href{ProjectLink.com}{\textbf{\large{\underline{InsightIQ}}} \href{https://github.com/saga-blast/InsightIQ}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{{Nest JS, Tailwind CSS, Prisma, Stripe}}}{}
+%           \resumeItemListStart
+%             \resumeItem{\normalsize{Developed a \textbf{SaaS AI} project which provides users with cutting-edge AI
+% capabilities through its \textbf{Next.js} based frontend, gorgeous UI made with \textbf{Tailwind CSS}, smooth database management with \textbf{Prisma}, and secure payment processing with \textbf{Stripe}.}}
+%             \resumeItem{\normalsize{With the aid of AI, a user can create music, images, videos, chat, and even generate codes.}}
+%             % \resumeItem{\textcolor{accent} {\href{Live Project Link} {\underline{\normalsize{Live site here}}}}}
+%           \resumeItemListEnd
+%           \vspace{-13pt}
+
+%       \resumeProjectHeading
+%           {{\textbf{\large{{BingeWatch}}} } $|$ \large{{ReactJs, NodeJs, Express, JWT, Firebase}}}{}
+%           \resumeItemListStart
+%             \resumeItem{\normalsize{Designed and developed a video streaming application with React, employing Node.js to establish resilient APIs,
+% MongoDB for user and movie schemas and utilizing Firebase for seamless file storage.}}
+%             % \resumeItem{\textcolor{accent} {\href{Project Link} {\underline{\normalsize{Download}}}}}
+%             \resumeItem{\normalsize{Prepared security measures with JWT authentication, harnessed React Hooks and Context API for seamless frontend
+% interactions.}}
+%           \resumeItemListEnd
+%           \vspace{-18pt}
+
+      \resumeProjectHeading
+          {{\textbf{\large{{TrackIt}}}
+          % \href{https://github.com/saga-blast/RealTimeTracking}{\raisebox{-0.1\height}\faExternalLink }
+          } $|$ \large{{EJS, Websocket}}}{}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Created a real-time location tracking application with \textbf{WebSocket.io} and \textbf{Leaflet.js} for smooth live tracking of numerous users on an interactive map.}}
+            % \resumeItem{\textcolor{accent} {\href{Project Link} {\underline{\normalsize{Download}}}}}
+          \resumeItemListEnd
+          \vspace{-5pt}
+
+
+        % \resumeProjectHeading
+        %   {{\textbf{\large{{CompareX}}}
+        %   % \href{https://github.com/saga-blast/RealTimeTracking}{\raisebox{-0.1\height}\faExternalLink }
+        %   } $|$ \large{{ Chrome Extension, JavaScript, Puppeteer}}}{}
+        %   \resumeItemListStart
+        %     \resumeItem{\normalsize{Developed a browser extension that dynamically extracts product prices from e-commerce sites and compares them using \textbf{web scraping} with Puppeteer, enhancing user decision-making.}}
+        %     % \resumeItem{\textcolor{accent} {\href{Project Link} {\underline{\normalsize{Download}}}}}
+        %   \resumeItemListEnd
+        %   \vspace{-12pt}
+
+      % \resumeProjectHeading
+      %     {{\textbf{\large{\underline{CryptoTicker}}} \href{https://github.com/saga-blast/CryptoTicker}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{{Kotlin, Android Studio}}}{}
+      %     \resumeItemListStart
+      %       \resumeItem{\normalsize{Build realtime Crypto app with \textbf{MVVM} design pattern using the \textbf{CoinGecko API}. User can switch to dark mode and also form favourite Crypto list.}}
+      %       % \resumeItem{\textcolor{accent} {\href{Project Link} {\underline{\normalsize{Download}}}}}
+      %       \resumeItem{\normalsize{App uses \textbf{MPAndroidChart} for creating Crypto graphs for the users.}}
+      %     \resumeItemListEnd
+      %     \vspace{-13pt}
+
+      %     \resumeProjectHeading
+      %     {\href{https://youtu.be/3SQk1hlTRAA}{\textbf{\large{\underline{Play Accord}}} \href{https://github.com/saga-blast/Play-Accord}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{{Java, Android Studio}}}{}
+      %     \resumeItemListStart
+      %       \resumeItem{\normalsize{ Designed a Video Streaming application where user can \textbf{upload} and \textbf{download} videos and can frame their own playlist after \textbf{authenticating} their credentials.}}
+      %       \resumeItem{\normalsize{Application offers functionalities like video quality control, speed control, search, fast forward and backward specifications.}}
+
+      %     \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+\vspace{-12pt}
+
+\vspace{2pt}
+%-----------EDUCATION-----------
+\section{EDUCATION}
+ \vspace{3pt}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Veer Surendra Sai University of Technology(VSSUT)}{08/2019 -- 05/2023}
+      {Bachelor of Technology $|$  \textbf{CGPA} - \textbf{8.29/10}}{Burla, Odisha, India}
+
+       % Data Structures \& Algorithms(DSA) - Operating Systems(OS) - Computer Networks(CN) - Database Management System (DBMS) - OOPS Concept - Web Development - Android Development - Software Development
+
+  \resumeSubHeadingListEnd
+
+  \vspace{-15pt}
+
+  % \resumeSubHeadingListStart
+  %   \resumeSubheading
+  %     {D.A.V. PUBLIC SCHOOL}{08/2017 -- 05/2019}
+  %     {Intermediate in Science - \textbf{Percentage} - \textbf{89\%}}{CDA, Cuttack, India}
+
+  %     % Science - Teamwork - Programming - Communication - Skill Development
+
+  % \resumeSubHeadingListEnd
+
+%------RELEVANT COURSEWORK-------
+% \section{PROFILE LINKS}
+%     %\resumeSubHeadingListStart
+%         \begin{multicols}{2}
+%             \begin{itemize}[itemsep=-2pt, parsep=5pt]
+%                 \item \textbf{Leetcode} : \href{https://leetcode.com/u/saga_blast/}{https://leetcode.com/u/saga\_blast}
+%                 \item\textbf{Github} : \href{https://github.com/saga-blast}{https://github.com/saga-blast}
+%                 \item \textbf{Codeforces} : \href{https://codeforces.com/profile/saga_blast}{https://codeforces.com/profile/saga\_blast}
+%                 \item \textbf{LinkedIn} : \href{https://www.linkedin.com/in/dpbhanja/}{https://www.linkedin.com/in/dpbhanja}
+%             \end{itemize}
+%         \end{multicols}
+%         \vspace*{2.0\multicolsep}
+%     %\resumeSubHeadingListEnd
+
+
+% \vspace{-15pt}
+%
+
+
+% %-----------INVOLVEMENT---------------
+% \section{EXTRACURRICULAR}
+%     \resumeSubHeadingListStart
+%         \resumeSubheading{Organization Name \href{Certificate Proof link}{\raisebox{-0.1\height}\faExternalLink } }{MM YYYY -- MM YYYY}{\underline{Role}}{Location}
+%             \resumeItemListStart
+%                 \resumeItem{\normalsize{About the role \textbf{and responsibilities carried out.}}}
+%                 \resumeItem{\normalsize{Participation Certificate. \href{ParticipationCertificateLink.com}{\raisebox{-0.1\height}\faExternalLink }}}
+%             \resumeItemListEnd
+%     \resumeSubHeadingListEnd
+%  \vspace{-11pt}
+
+%  %-----------CERTIFICATIONS---------------
+% \section{CERTIFICATIONS}
+
+% $\sbullet[.75] \hspace{0.1cm}$ {\href{certificateLink.com}{ReactJS \& Redux - Udemy}} \hspace{1.6cm}
+% $\sbullet[.75] \hspace{0.1cm}$ {\href{certificateLink.com}{Java}} \hspace{2.59cm}
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com} {Command Line in Linux - Coursera}}\\
+
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com}{Python for Data Science - XIE}} \hspace{1cm}
+% $\sbullet[.75] \hspace{0.1cm}$ {\href{certificateLink.com}{SQL}} \hspace{2.6cm}
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com}{Microsoft AI Classroom - Microsoft}} \\
+
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com}{\textbf{5 Stars} in \textbf{C++} \& \textbf{SQL} \href{certificateLink.com}{\raisebox{-0.1\height}\faExternalLink }}}\hspace{1.45cm}
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com}{MongoDB Basics}} \hspace{0.5cm}
+% $\sbullet[.75] \hspace{0.2cm}${\href{certificateLink.com}{NodeJS with Express \& MongoDB - Udemy}} \\
+
+
+\end{document}
