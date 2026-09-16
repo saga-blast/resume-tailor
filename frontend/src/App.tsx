@@ -1,11 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import JobDetail from "./pages/JobDetail";
 import JobEditor from "./pages/JobEditor";
+import JobMatch from "./pages/JobMatch";
 import JobsList from "./pages/JobsList";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import NewJob from "./pages/NewJob";
 import Onboarding from "./pages/Onboarding";
+import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
 
 export default function App() {
@@ -15,9 +17,11 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/preferences" element={<Preferences />} />
       <Route path="/jobs" element={<JobsList />} />
       <Route path="/jobs/new" element={<NewJob />} />
       <Route path="/jobs/:jobId" element={<JobDetail />} />
+      <Route path="/jobs/:jobId/match" element={<JobMatch />} />
       <Route path="/jobs/:jobId/editor" element={<JobEditor />} />
     </Routes>
   );

@@ -27,7 +27,9 @@ class GroqProvider(LLMProvider):
         tool_name: str,
         tool_description: str,
         correction: str | None,
+        max_tokens: int | None,
     ) -> T:
+        effective_max_tokens = max_tokens or MAX_TOKENS
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -37,7 +39,7 @@ class GroqProvider(LLMProvider):
 
         response = await self._client.chat.completions.create(
             model=self._model,
-            max_tokens=MAX_TOKENS,
+            max_tokens=effective_max_tokens,
             messages=messages,
             tools=[
                 {
@@ -54,11 +56,11 @@ class GroqProvider(LLMProvider):
         choice = response.choices[0]
         if choice.finish_reason == "length":
             raise StructuredCallError(
-                f"Response was truncated at the {MAX_TOKENS}-token limit before completing valid JSON.",
+                f"Response was truncated at the {effective_max_tokens}-token limit before completing valid JSON.",
                 correction_hint=(
                     f"Your previous response was cut off before completing valid JSON because it hit "
-                    f"the {MAX_TOKENS}-token limit. Provide a more concise answer this time -- merge "
-                    "closely related or overlapping items -- so the complete JSON fits within the limit."
+                    f"the {effective_max_tokens}-token limit. Provide a more concise answer this time -- "
+                    "merge closely related or overlapping items -- so the complete JSON fits within the limit."
                 ),
             )
         message = choice.message

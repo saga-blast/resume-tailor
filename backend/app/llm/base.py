@@ -30,6 +30,7 @@ class LLMProvider(ABC):
         schema: type[T],
         tool_name: str,
         tool_description: str,
+        max_tokens: int | None = None,
     ) -> T:
         """Run a forced tool-use call and return the validated structured result.
 
@@ -37,6 +38,13 @@ class LLMProvider(ABC):
         open-weight models in particular sometimes rename/omit schema fields (e.g.
         writing `dateRange` when the schema says `dates`) even under forced tool
         use, and telling the model exactly what it got wrong reliably self-corrects.
+
+        `max_tokens` overrides the provider's default output budget -- some
+        providers' free-tier rate limits count the requested max_tokens (not
+        actual usage) against a tokens-per-minute cap, so a call combining a
+        large input with a large default output ceiling can be rejected before
+        it even runs. Pass a smaller value for calls whose real output is small
+        (e.g. an edit plan) even when the input context is large.
         """
         correction: str | None = None
         last_error: Exception | None = None
@@ -49,6 +57,7 @@ class LLMProvider(ABC):
                     tool_name=tool_name,
                     tool_description=tool_description,
                     correction=correction,
+                    max_tokens=max_tokens,
                 )
             except Exception as exc:  # noqa: BLE001 -- deliberately broad: any failure triggers a retry
                 last_error = exc
@@ -71,6 +80,7 @@ class LLMProvider(ABC):
         tool_name: str,
         tool_description: str,
         correction: str | None,
+        max_tokens: int | None,
     ) -> T:
         """A single forced tool-use attempt. `correction`, if set, is fed back as
         an extra message describing why the previous attempt was rejected."""

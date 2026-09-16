@@ -40,3 +40,27 @@ class ExtractedRequirement(BaseModel):
 
 class ExtractedRequirements(BaseModel):
     requirements: list[ExtractedRequirement]
+
+
+class RequirementMatchSuggestion(BaseModel):
+    requirement_text: str
+    status: str  # "matched" | "needs_clarification" | "unmatched"
+    matched_profile_item: str | None = None
+    suggested_question: str | None = None
+
+
+class MatchSuggestions(BaseModel):
+    matches: list[RequirementMatchSuggestion]
+
+
+class IndexedRewrite(BaseModel):
+    index: int
+    rewritten_text: str
+
+
+class ContentRewritePlan(BaseModel):
+    rewrites: list[IndexedRewrite]
+
+
+class TrimPlan(BaseModel):
+    indices_to_remove: list[int]

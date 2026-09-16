@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ApiError, Job, listJobs } from "../api/client";
+import { Link, useNavigate } from "react-router-dom";
+import { ApiError, Job, deleteJob, listJobs } from "../api/client";
 import NavBar from "../components/NavBar";
 
 const STATUS_LABELS: Record<string, string> = {
@@ -8,20 +8,43 @@ const STATUS_LABELS: Record<string, string> = {
   requirements_extracted: "Requirements extracted",
   extraction_failed: "Extraction failed",
   questions_pending: "Questions pending",
+  matched: "Matched",
   generated: "Generated",
   compiled: "Compiled",
   downloaded: "Downloaded",
 };
 
 export default function JobsList() {
+  const navigate = useNavigate();
   const [jobs, setJobs] = useState<Job[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
+    load();
+  }, []);
+
+  function load() {
     listJobs()
       .then(setJobs)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Failed to load jobs"));
-  }, []);
+  }
+
+  async function handleDelete(e: React.MouseEvent, job: Job) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!window.confirm(`Delete "${job.title}"? This can't be undone.`)) return;
+    setDeletingId(job.id);
+    setError(null);
+    try {
+      await deleteJob(job.id);
+      setJobs((prev) => prev?.filter((j) => j.id !== job.id) ?? prev);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to delete job");
+    } finally {
+      setDeletingId(null);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -50,10 +73,10 @@ export default function JobsList() {
               .slice()
               .reverse()
               .map((job) => (
-                <Link
+                <div
                   key={job.id}
-                  to={job.jd_raw_text ? `/jobs/${job.id}` : `/jobs/${job.id}/editor`}
-                  className="flex items-center justify-between px-4 py-3 hover:bg-gray-50"
+                  onClick={() => navigate(job.jd_raw_text ? `/jobs/${job.id}` : `/jobs/${job.id}/editor`)}
+                  className="flex cursor-pointer items-center justify-between px-4 py-3 hover:bg-gray-50"
                 >
                   <div>
                     <p className="text-sm font-medium text-gray-800">{job.title}</p>
@@ -66,8 +89,15 @@ export default function JobsList() {
                     <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
                       {STATUS_LABELS[job.status] ?? job.status}
                     </span>
+                    <button
+                      onClick={(e) => handleDelete(e, job)}
+                      disabled={deletingId === job.id}
+                      className="rounded border border-gray-300 px-2 py-1 text-xs text-gray-500 hover:border-red-300 hover:text-red-600 disabled:opacity-50"
+                    >
+                      {deletingId === job.id ? "Deleting…" : "Delete"}
+                    </button>
                   </div>
-                </Link>
+                </div>
               ))}
           </div>
         )}

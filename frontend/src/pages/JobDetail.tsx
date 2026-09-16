@@ -56,12 +56,23 @@ export default function JobDetail() {
                 <h1 className="text-xl font-semibold text-gray-800">{job.title}</h1>
                 {job.company && <p className="text-sm text-gray-500">{job.company}</p>}
               </div>
-              <Link
-                to={`/jobs/${job.id}/editor`}
-                className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50"
-              >
-                Open Resume Editor
-              </Link>
+              <div className="flex shrink-0 gap-2">
+                {job.extracted_requirements && (
+                  <Link
+                    to={`/jobs/${job.id}/match`}
+                    className="rounded bg-indigo-600 px-3 py-2 text-sm text-white hover:bg-indigo-700"
+                  >
+                    Match Against Profile
+                    {job.match_percentage !== null && ` (${Math.round(job.match_percentage)}%)`}
+                  </Link>
+                )}
+                <Link
+                  to={`/jobs/${job.id}/editor`}
+                  className="rounded border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50"
+                >
+                  Open Resume Editor
+                </Link>
+              </div>
             </div>
 
             {job.status === "extraction_failed" && (

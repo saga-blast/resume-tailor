@@ -8,6 +8,9 @@ venv/
 backend/storage/*
 !backend/storage/.gitkeep
 
+# Dev-only admin scripts (destructive, not part of the app)
+backend/scripts/
+
 # Node
 node_modules/
 frontend/dist/

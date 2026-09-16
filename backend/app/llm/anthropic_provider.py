@@ -22,14 +22,16 @@ class AnthropicProvider(LLMProvider):
         tool_name: str,
         tool_description: str,
         correction: str | None,
+        max_tokens: int | None,
     ) -> T:
+        effective_max_tokens = max_tokens or MAX_TOKENS
         messages = [{"role": "user", "content": user_prompt}]
         if correction:
             messages.append({"role": "user", "content": correction})
 
         response = await self._client.messages.create(
             model=self._model,
-            max_tokens=MAX_TOKENS,
+            max_tokens=effective_max_tokens,
             system=system_prompt,
             messages=messages,
             tools=[
@@ -43,11 +45,11 @@ class AnthropicProvider(LLMProvider):
         )
         if response.stop_reason == "max_tokens":
             raise StructuredCallError(
-                f"Response was truncated at the {MAX_TOKENS}-token limit before completing valid JSON.",
+                f"Response was truncated at the {effective_max_tokens}-token limit before completing valid JSON.",
                 correction_hint=(
                     f"Your previous response was cut off before completing valid JSON because it hit "
-                    f"the {MAX_TOKENS}-token limit. Provide a more concise answer this time -- merge "
-                    "closely related or overlapping items -- so the complete JSON fits within the limit."
+                    f"the {effective_max_tokens}-token limit. Provide a more concise answer this time -- "
+                    "merge closely related or overlapping items -- so the complete JSON fits within the limit."
                 ),
             )
         for block in response.content:

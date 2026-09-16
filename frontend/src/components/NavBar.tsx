@@ -19,6 +19,9 @@ export default function NavBar() {
         <Link to="/profile" className="text-sm text-gray-500 hover:text-gray-800">
           Profile
         </Link>
+        <Link to="/preferences" className="text-sm text-gray-500 hover:text-gray-800">
+          Preferences
+        </Link>
         <Link to="/onboarding" className="text-sm text-gray-500 hover:text-gray-800">
           Settings
         </Link>

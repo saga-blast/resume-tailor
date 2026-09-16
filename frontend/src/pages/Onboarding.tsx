@@ -11,6 +11,7 @@ import {
   uploadTemplate,
   verifyModel,
 } from "../api/client";
+import NavBar from "../components/NavBar";
 
 type Step = "loading" | "llm-config" | "pick-model" | "template" | "done";
 
@@ -131,7 +132,9 @@ export default function Onboarding() {
   }
 
   return (
-    <div className="mx-auto max-w-xl px-6 py-10">
+    <div className="min-h-screen bg-gray-50">
+      <NavBar />
+      <div className="mx-auto max-w-xl px-6 py-10">
       <h1 className="mb-1 text-xl font-semibold text-gray-800">Set up Resume Tailor</h1>
       <p className="mb-6 text-sm text-gray-500">
         One-time setup: connect an LLM provider, then upload your resume.
@@ -336,6 +339,7 @@ export default function Onboarding() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
