@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth, jobs
+from app.api import auth, jobs, onboarding, profile
 from app.db import init_db
 from app.seed import ensure_seed_user
 
@@ -27,6 +27,8 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(jobs.router)
+app.include_router(onboarding.router)
+app.include_router(profile.router)
 
 
 @app.get("/health")

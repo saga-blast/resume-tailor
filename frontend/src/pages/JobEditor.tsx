@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { compileResume, createJob, getResume, saveResume } from "../api/client";
 import LatexEditor from "../components/editor/LatexEditor";
 import PdfPreview from "../components/editor/PdfPreview";
@@ -35,7 +35,7 @@ export default function JobEditor() {
 
     async function bootstrap() {
       if (jobId === "new") {
-        const job = await createJob("Demo Resume", SAMPLE_TEX);
+        const job = await createJob({ title: "Demo Resume", texSource: SAMPLE_TEX });
         if (!cancelled) navigate(`/jobs/${job.id}/editor`, { replace: true });
         return;
       }
@@ -90,7 +90,12 @@ export default function JobEditor() {
   return (
     <div className="flex h-screen flex-col">
       <header className="flex items-center justify-between border-b border-gray-200 px-4 py-2">
-        <h1 className="text-sm font-semibold text-gray-800">Resume Tailor</h1>
+        <div className="flex items-center gap-3">
+          <Link to="/jobs" className="text-sm text-gray-500 hover:text-gray-800">
+            ← Jobs
+          </Link>
+          <h1 className="text-sm font-semibold text-gray-800">Resume Tailor</h1>
+        </div>
         <div className="flex items-center gap-3">
           <CompileStatusBadge state={compileState} />
           <button

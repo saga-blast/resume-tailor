@@ -4,14 +4,8 @@ from typing import Optional
 from sqlmodel import Field, SQLModel
 
 
-class JobApplication(SQLModel, table=True):
+class ResumeTemplate(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.id", index=True)
-    title: str = "Untitled"
-    company: Optional[str] = None
-    tex_source: str = ""
-    jd_raw_text: Optional[str] = None
-    extracted_requirements_json: Optional[str] = None
-    match_percentage: Optional[float] = None
-    status: str = "draft"
+    raw_tex: str
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
